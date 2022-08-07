@@ -22,4 +22,34 @@ public class StatsService {
         }
         return count;
     }
+    public int countAboveAvg(long[] sales) {
+        int count = 0;
+        for (long sale : sales) {
+            if (sale > average(sale)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countMinDay(long[] sales) {
+        int count = 0;
+        for (int i=0; i<sales.length; i++) {
+            if (sales [i]<sales[count]) {
+                count = i;
+            }
+        }
+        return count;
+    }
+
+    public int countMaxDay(long[] sales) {
+        int count = 0;
+        for (int i=0; i>sales.length; i++) {
+            if (sales [i]<sales[count]) {
+                count = i;
+            }
+        }
+        return count;
+        
+    }
 }
