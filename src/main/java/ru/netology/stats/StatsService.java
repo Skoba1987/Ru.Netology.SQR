@@ -1,55 +1,64 @@
-package ru.netology.stats;
+package ru.eshtajee.statist.services;
 
 public class StatsService {
-    public long sum(long[] sales) {
-        int sum = 0;
-        for (long sale : sales) {
-            sum += sale;
+
+    public int getSumSales(int[] allSales) {
+        int sumSales = 0; 
+
+        for (int i = 0; i < allSales.length; i++) {
+            sumSales = sumSales + allSales[i];
         }
-        return sum;
+        return sumSales;
     }
 
-    public long average(long[] sales) {
-        return sum(sales) / 12;
+    public int getMiddleSales(int[] allSales) {
+        int sumSales = getSumSales(allSales);
+        int middleSales = 0; 
+
+        for (int i = 0; i < allSales.length; i++) {
+            middleSales = sumSales / allSales.length;
+        }
+        return middleSales;
     }
 
-    public int countBelowAvg(long[] sales) {
-        int count = 0;
-        for (long sale : sales) {
-            if (sale < average(sale)) {
-                count++;
-            }
+    public int getPicSalesMonth(int[] allSales) {
+        int picSalesMonth = 0; 
+
+        for (int i = 0; i < allSales.length; i++) {
+            if (allSales[i] >= allSales[picSalesMonth])
+                picSalesMonth = i;
         }
-        return count;
-    }
-    public int countAboveAvg(long[] sales) {
-        int count = 0;
-        for (long sale : sales) {
-            if (sale > average(sale)) {
-                count++;
-            }
-        }
-        return count;
+        return picSalesMonth;
+
     }
 
-    public int countMinDay(long[] sales) {
-        int count = 0;
-        for (int i=0; i<sales.length; i++) {
-            if (sales [i]<sales[count]) {
-                count = i;
-            }
+    public int getMinSalesMonth(int[] allSales) {
+        int minSalesMonth = 0; 
+
+        for (int i = 0; i < allSales.length; i++) {
+            if (allSales[i] <= allSales[minSalesMonth])
+                minSalesMonth = i;
         }
-        return count;
+        return minSalesMonth;
     }
 
-    public int countMaxDay(long[] sales) {
-        int count = 0;
-        for (int i=0; i>sales.length; i++) {
-            if (sales [i]<sales[count]) {
-                count = i;
-            }
+    public int getMonthDown(int[] allSales) {
+        int monthDown = 0; 
+
+        for (int i = 0;  i < allSales.length; i++) {
+            if (allSales[i] < getMiddleSales(allSales))
+                monthDown = monthDown + 1;
         }
-        return count;
-        
+        return monthDown;
+    }
+
+    public int getMonthHigh(int[] allSales) {
+        int monthHigh = 0; 
+
+        for (int allSale : allSales) {
+            if (getMiddleSales(allSales) < allSale)
+                monthHigh = monthHigh + 1;
+        }
+        return monthHigh;
     }
 }
