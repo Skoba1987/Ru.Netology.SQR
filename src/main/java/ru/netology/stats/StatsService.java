@@ -1,4 +1,4 @@
-package ru.eshtajee.statist.services;
+package ru.netology.stats;
 
 public class StatsService {
 
@@ -21,14 +21,14 @@ public class StatsService {
         return middleSales;
     }
 
-    public int getPicSalesMonth(int[] allSales) {
-        int picSalesMonth = 0; 
+    public int getMaxSalesMonth(int[] allSales) {
+        int maxSalesMonth = 0; 
 
         for (int i = 0; i < allSales.length; i++) {
-            if (allSales[i] >= allSales[picSalesMonth])
-                picSalesMonth = i;
+            if (allSales[i] >= allSales[maxSalesMonth])
+                maxSalesMonth = i;
         }
-        return picSalesMonth;
+        return maxSalesMonth;
 
     }
 
